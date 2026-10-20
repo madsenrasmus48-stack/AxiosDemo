@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Template</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <h1>{{ intro }}</h1>
+      
+      <h1>{{name}}</h1>
+      <input v-model="name" placeholder="Enter Your Name Here">
+
+      <div v-for="item in liste" :key="item">
+        {{item}}
+      </div>
+
+      <div v-for="item in liste" :key="item" v-show="hide">
+        <h1 v-if="item < 3" class="alert">{{item}}</h1>
+
+        <h1 v-else class="normal">{{item}}</h1>
+      </div>
+      <input v-model="nr", placeholder="Enter your number">
+      <br>
+      <button @click="add">tilføj tal</button>
+      <br>
+      <button @click="hidelist" v-if ="hide">skjul liste</button>
+      <button @click="hidelist" v-else="!hide">vis liste</button>
+      
+      <div v-for="item in listeNavne" :key="item">
+      <h1> {{item.name}} is {{item.age}}</h1>
+      </div>
+
+      <input v-model="name" placeholder="enter your name">
+      <input v-model="age" placeholder="enter your age">
+      <button @click="addPerson"> Add person</button>
+    </div>
+
+    <!-- Import App -->
+    <script src="./js/main.js"></script>
+
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>
