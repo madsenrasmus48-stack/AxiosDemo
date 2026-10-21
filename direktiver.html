@@ -8,47 +8,48 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.20.0/dist/axios.min.js"></script>">
   </head>
   <body>
     <div id="app">
       <div class="nav-bar"></div>
 
-      <h1>{{ intro }}</h1>
+        <h1>{{ intro }}</h1>
+        <!-- forloop with v-show-->
+        <div>
+          <input v-model="nr", placeholder="Enter your number">
+          <button @click="add">tilføj tal</button>
+          <button @click="hidelist" v-if ="hide">skjul liste</button>
+          <button @click="hidelist" v-else="!hide">vis liste</button>
+          <br>
+          <div v-for="item in liste" :key="item" v-show="hide">
+            <h1 v-if="item < 3" class="alert">{{item}}</h1>
+
+            <h1 v-else class="normal">{{item}}</h1>
+          </div>
+        </div>
+
+        <!--create object-->
+        <div>
+          <input v-model="name" placeholder="enter your name">
+          <input v-model="age" placeholder="enter your age">
+          <button @click="addPerson"> Add person</button>
+          <div v-for="item in listeNavne" :key="item">
+          <ul> {{item.name}} is {{item.age}}</ul>
+          </div>
+        </div>
+      </div>
       
-      <h1>{{name}}</h1>
-      <input v-model="name" placeholder="Enter Your Name Here">
+      <!--Loading scripts-->
+      <div>
+        <!-- Import App -->
+        <script src="./js/main.js"></script>
 
-      <div v-for="item in liste" :key="item">
-        {{item}}
+        <!-- Mount App -->
+        <script>
+          const mountedApp = app.mount('#app')
+        </script>
       </div>
-
-      <div v-for="item in liste" :key="item" v-show="hide">
-        <h1 v-if="item < 3" class="alert">{{item}}</h1>
-
-        <h1 v-else class="normal">{{item}}</h1>
-      </div>
-      <input v-model="nr", placeholder="Enter your number">
-      <br>
-      <button @click="add">tilføj tal</button>
-      <br>
-      <button @click="hidelist" v-if ="hide">skjul liste</button>
-      <button @click="hidelist" v-else="!hide">vis liste</button>
-      
-      <div v-for="item in listeNavne" :key="item">
-      <h1> {{item.name}} is {{item.age}}</h1>
-      </div>
-
-      <input v-model="name" placeholder="enter your name">
-      <input v-model="age" placeholder="enter your age">
-      <button @click="addPerson"> Add person</button>
     </div>
-
-    <!-- Import App -->
-    <script src="./js/main.js"></script>
-
-    <!-- Mount App -->
-    <script>
-      const mountedApp = app.mount('#app')
-    </script>
   </body>
 </html>

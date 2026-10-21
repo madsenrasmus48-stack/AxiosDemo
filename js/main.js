@@ -29,6 +29,9 @@ const app = Vue.createApp({
         },
         addPerson(){
         this.listeNavne.push({name: this.name, age: this.age})
+        },
+        Post(){
+            
         }
     },
     computed: {
