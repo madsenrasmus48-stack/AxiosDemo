@@ -12,7 +12,8 @@ const app = Vue.createApp({
                 {name: "Rasmus", age: 27},
                 {name: "Christian", age: 12},
                 {name: "Søren",age: 69}
-            ]
+            ],
+            info:[]
 
         }
     },
@@ -30,9 +31,12 @@ const app = Vue.createApp({
         addPerson(){
         this.listeNavne.push({name: this.name, age: this.age})
         },
-        Post(){
-            
-        }
+        get () {
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos')
+      .then(response => (this.info = response))
+  }
+      
     },
     computed: {
         myComputed() {

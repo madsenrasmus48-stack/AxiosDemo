@@ -15,6 +15,9 @@
       <div class="nav-bar"></div>
 
         <h1>{{ intro }}</h1>
+        <button @click="get">klik</button>
+
+
         <!-- forloop with v-show-->
         <div>
           <input v-model="nr", placeholder="Enter your number">
@@ -37,8 +40,17 @@
           <div v-for="item in listeNavne" :key="item">
           <ul> {{item.name}} is {{item.age}}</ul>
           </div>
+        
         </div>
+         <div v-for="item in info.data" :key="item.userId">
+          <ul>
+            {{item.id}} is {{item.title}}
+          </ul>
+        </div>
+
       </div>
+
+     
       
       <!--Loading scripts-->
       <div>
